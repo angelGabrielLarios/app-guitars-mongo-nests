@@ -17,9 +17,14 @@ import { JoiValidationSchema } from './config/joi.validation';
       validationSchema: JoiValidationSchema
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'client')
+      rootPath: join(__dirname, '..', 'client'),
     }),
-    MongooseModule.forRoot(process.env.MONGODB),
+    MongooseModule.forRoot(
+      process.env.MONGODB,
+      {
+        dbName: 'guitarsDB'
+      }
+    ),
     GuitarsModule,
     CommonModule,
     SeedModule,
